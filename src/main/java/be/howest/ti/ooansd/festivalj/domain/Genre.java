@@ -5,7 +5,7 @@ public enum Genre {
     ACOUSTIC,
     BLUES,
     CLASSICAL,
-    DANCE,
+    DRUM_AND_BASS,
     ELECTRONIC;
 
 }

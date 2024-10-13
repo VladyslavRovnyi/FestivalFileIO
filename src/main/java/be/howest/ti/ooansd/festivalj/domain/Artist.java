@@ -1,9 +1,10 @@
 package be.howest.ti.ooansd.festivalj.domain;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Artist {
+public class Artist implements Serializable {
 
     private static final Logger LOGGER = Logger.getLogger(Artist.class.getName());
 
@@ -18,12 +19,14 @@ public class Artist {
         this.genre = genre;
     }
 
+
     public String getName() {
         return name;
     }
 
+    @Override
     public String toString() {
-        return name;
+        return name + " ("  + rating + ")";
     }
 
     public Stars getRating() {

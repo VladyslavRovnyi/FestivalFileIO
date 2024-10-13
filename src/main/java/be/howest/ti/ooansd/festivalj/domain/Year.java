@@ -1,6 +1,8 @@
 package be.howest.ti.ooansd.festivalj.domain;
 
-public class Year {
+import java.io.Serializable;
+
+public class Year implements Serializable {
 
     private final int startYear;
 

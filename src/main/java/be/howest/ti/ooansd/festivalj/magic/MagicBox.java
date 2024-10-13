@@ -42,4 +42,6 @@ public class MagicBox {
     public void addPerformance(Performance performance) {
         festival.addPerformance(performance);
     }
+
+
 }

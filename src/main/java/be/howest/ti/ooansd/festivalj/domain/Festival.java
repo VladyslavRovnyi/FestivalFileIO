@@ -1,11 +1,12 @@
 package be.howest.ti.ooansd.festivalj.domain;
 
+import java.io.Serializable;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Festival {
+public class Festival implements Serializable {
 
     private final Map<Stage, Lineup> performances = new EnumMap<>(Stage.class);
     private final String name;

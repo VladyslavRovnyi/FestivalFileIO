@@ -1,8 +1,9 @@
 package be.howest.ti.ooansd.festivalj.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Performance implements Comparable<Performance> {
+public class Performance implements Comparable<Performance>, Serializable {
 
     private final Stage where;
     private final TimeBlock when;

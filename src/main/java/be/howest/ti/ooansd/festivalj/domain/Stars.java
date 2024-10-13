@@ -1,6 +1,8 @@
 package be.howest.ti.ooansd.festivalj.domain;
 
-public class Stars {
+import java.io.Serializable;
+
+public class Stars implements Serializable {
 
     private final int rating;
 

@@ -1,10 +1,11 @@
 package be.howest.ti.ooansd.festivalj.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Lineup {
+public class Lineup implements Serializable {
 
 
     private final List<Performance> performances = new ArrayList<>();
