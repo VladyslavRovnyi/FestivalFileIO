@@ -12,13 +12,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class WriteDemoApp {
 
     public static void main(String[] args) {
-        List<Artist> artists = generateArtists();
-        Map<Genre, List<Artist>> artistsByGenre = groupArtistsByGenre(artists);
-        writeArtistsToFiles(artistsByGenre);
+        List<Artist> artists = generateArtists(10);
+        System.out.println(artists);
+//        Map<Genre, List<Artist>> artistsByGenre = groupArtistsByGenre(artists);
+//        writeArtistsToFiles(artistsByGenre);
     }
 
     private static List<Artist> generateArtists() {
@@ -26,13 +28,30 @@ public class WriteDemoApp {
                 "Grace", "Hank", "Mike", "Bobby", "Judy", "Kyle",
                 "Laura", "Mason", "Nina", "Oscar", "Paul", "Quincy",
                 "Rachel", "Sam");
-        List<Genre> genres = Arrays.asList(Genre.ACOUSTIC, Genre.BLUES, Genre.CLASSICAL,
-                Genre.DRUM_AND_BASS, Genre.ELECTRONIC);
+        Genre[] genres = Genre.values();
         Random random = new Random();
         List<Artist> artists = new ArrayList<>();
 
         for (String name : names) {
-            Genre genre = genres.get(random.nextInt(genres.size()));
+            Genre genre = genres[random.nextInt(genres.length)];
+            Stars stars = new Stars(random.nextInt(5) + 1);  // Star rating from 1 to 5
+            artists.add(new Artist(name, stars, genre));
+        }
+        return artists;
+    }
+
+    private static List<Artist> generateArtists(int size) {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David", "Eve", "Frank",
+                "Grace", "Hank", "Mike", "Bobby", "Judy", "Kyle",
+                "Laura", "Mason", "Nina", "Oscar", "Paul", "Quincy",
+                "Rachel", "Sam");
+        Genre[] genres = Genre.values();
+        List<Artist> artists = new ArrayList<>();
+
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        for (int i = 0; i < size; i++) {
+            var name = names.get(random.nextInt(names.size()));
+            Genre genre = genres[random.nextInt(genres.length)];
             Stars stars = new Stars(random.nextInt(5) + 1);  // Star rating from 1 to 5
             artists.add(new Artist(name, stars, genre));
         }
